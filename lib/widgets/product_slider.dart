@@ -45,12 +45,12 @@ class ProductSlider extends StatefulWidget {
   ProductSlider({this.items});
 
   @override
-  _ProductSliderState createState() =>
-      _ProductSliderState();
+  _ProductSliderState createState() => _ProductSliderState();
 }
 
 class _ProductSliderState extends State<ProductSlider> {
   int activeIndex = 0;
+
   setActiveDot(index) {
     setState(() {
       activeIndex = index;
@@ -68,26 +68,26 @@ class _ProductSliderState extends State<ProductSlider> {
             height: 300,
             width: MediaQuery.of(context).size.width,
             child: CarouselSlider(
-              onPageChanged: (index) {
-                setActiveDot(index);
-              },
-              autoPlayCurve: Curves.fastLinearToSlowEaseIn,
-              autoPlayAnimationDuration: Duration(seconds: 2),
-              viewportFraction: 1.0,
+              options: CarouselOptions(
+                viewportFraction: 1.0,
+                autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+                onPageChanged: (index, _) {
+                  setActiveDot(index);
+                },
+                autoPlayAnimationDuration: Duration(seconds: 2),
+              ),
               items: widget.items.map((item) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Stack(
                       children: <Widget>[
                         Container(
-                          
                           width: MediaQuery.of(context).size.width,
                           child: Image(
-                            image: AssetImage("assets/images/"+item),
+                            image: AssetImage("assets/images/" + item),
                             fit: BoxFit.cover,
                           ),
                         ),
-                        
                       ],
                     );
                   },
@@ -96,10 +96,10 @@ class _ProductSliderState extends State<ProductSlider> {
             ),
           ),
           Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(widget.items.length, (idx) {
-                  return activeIndex == idx ? ActiveDot() : InactiveDot();
-                }))
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(widget.items.length, (idx) {
+                return activeIndex == idx ? ActiveDot() : InactiveDot();
+              }))
         ],
       ),
     );

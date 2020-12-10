@@ -4,6 +4,12 @@
 
 A new Flutter project.
 
+# Captures
+
+| Home | Detail | Menu | Checkout |
+| - | - | - | - | - |
+| ![](captures/home.png) | ![](captures/detail.png) | ![](captures/checkout.png) | ![](captures/menu.png) |
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
